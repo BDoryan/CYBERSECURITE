@@ -8,8 +8,8 @@ def chiffrementCesar(phrase, distance):
         if letter not in alphabet: 
             final += letter;
             continue;
-        position=alphabet.index(letter)
-        final += alphabet[(position + distance) % 26]
+        position=ord(letter)
+        final += chr((position + distance))
     return final;
 
 def dechiffrementCesar(phrase, distance):
@@ -18,8 +18,8 @@ def dechiffrementCesar(phrase, distance):
         if letter not in alphabet: 
             final += letter;
             continue;
-        position=alphabet.index(letter)
-        final += alphabet[position % 26 - distance]
+        position=ord(letter)
+        final += chr(position - distance)
     return final;
 
 def trueOrFalseValue(value, trueValue, falseValue):
@@ -32,6 +32,6 @@ phrase = input('Qu\'est-ce que vous voulez chiffrer ?\n')
 chiffrer=chiffrementCesar(phrase, 7);
 print(chiffrer);
 print(dechiffrementCesar(chiffrer, 7));
-print("Test unitaire, est-ce que le chiffre et le déchiffrement se passe correcte")
+print("Test unitaire, est-ce que le chiffre et le déchiffrement se passe correctement")
 print("  * Chiffrement : ", trueOrFalseValue(chiffrer != phrase,  "SUCCES", "ECHEC"))
 print("  * Déchiffrement : ", trueOrFalseValue(phrase == dechiffrementCesar(chiffrer, 7), "SUCCES", "ECHEC"))
